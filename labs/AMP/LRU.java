@@ -4,14 +4,7 @@ class LRU
 {
 	public static void main(String args[])
 	{
-		//int mainMemory[] = new int[16];
 		int cache[][] = new int [4][2]; //1st col stores page number, 2nd stores time
-
-		/*for(int i=0;i<mainMemory.length;i++) //assign random values to main memory
-		{
-			mainMemory[i]=(int)(Math.random()*100);
-		}*/
-
 		int mainMemory[]={1,3,4,7,2,4,6,3,1,2,1,3,5,6,4,3};
 
 		//assign first 4 values from main memory to cache
@@ -24,12 +17,20 @@ class LRU
 			}
 		}
 		
-		for(int i=0;i<4;i++)
+		/*for(int i=0;i<4;i++)
 		{
 			System.out.println(cache[i][0]+" "+cache[i][1]);
-		}
+		}*/
+
 		for(int i=0;i<mainMemory.length;i++)
 		{
+			System.out.print("Cache : ");
+			for(int j=0;j<4;j++)
+			{
+				System.out.print(cache[j][0]+" ");
+			}
+			System.out.println();
+
 			System.out.println("Fetch Page "+mainMemory[i]+"....");
 			int loc = inCache(cache,mainMemory[i]);
 			if(loc==-1)
@@ -47,6 +48,7 @@ class LRU
 			}
 			//increase time of all
 			increaseTime(cache);
+			System.out.println();
 		}
 	}
 
