@@ -1,0 +1,39 @@
+<html>
+	<head>
+		<script type="text/javascript">
+		function time()
+		{
+			var today = new Date();
+			var hours = today.getHours();
+			var minutes = today.getMinutes();
+			var seconds = today.getSeconds();
+
+			document.clock.hour.value=zero(hours);
+			document.clock.minutes.value=zero(minutes);
+			document.clock.seconds.value=zero(seconds);
+
+			setTimeout("time()",500);
+		}
+
+		function zero(time)
+		{	
+			if(time<10)
+			{
+				time="0"+time;
+			}
+			return time;
+		}
+		</script>
+	</head>
+
+	<body onLoad="time();">
+		<form name="clock" >
+			Hour:
+			<input type="text" name="hour">
+			Minutes:
+			<input type="text" name="minutes">
+			Seconds:
+			<input type="text" name="seconds">
+		</form>
+	</body>
+</html>

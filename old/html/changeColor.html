@@ -1,0 +1,27 @@
+<html>
+	<head>
+		<script type="text/javascript">
+
+		function changeColor1()
+		{
+			document.body.bgColor="red";
+			setTimeout("changeColor2()",200);
+		}
+
+		function changeColor2()
+		{
+			document.body.bgColor="green";
+			setTimeout("changeColor3()",200);
+		}
+
+		function changeColor3()
+		{
+			document.body.bgColor="blue";
+			setTimeout("changeColor1()",200);
+		}
+		</script>
+	</head>
+
+	<body onLoad="changeColor1();">
+	</body>
+</html>

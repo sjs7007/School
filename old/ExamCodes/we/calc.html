@@ -1,0 +1,45 @@
+<html>
+	<head>
+		<script type="text/javascript">
+
+		function calc()
+		{
+			var a = parseFloat(document.info.op1.value);
+			var b = document.info.operation.value;
+			var c = parseFloat(document.info.op2.value);
+
+			if(b=="+")
+			{
+				document.info.result.value=a+c;
+			}
+			else if(b=="-")
+			{
+				document.info.result.value=a-c;
+			}
+			else if(b=="/")
+			{
+				document.info.result.value=a/c;
+			}
+			else if(b=="*")
+			{
+				document.info.result.value=a*c;
+			}
+		}
+		</script>
+	</head>
+	
+	<body>
+		<form name="info">
+			Operand1 :
+			<input type="text" name="op1">
+			Operation:
+			<input type="text" name="operation"> 
+			Operand2:
+			<input type="text" name="op2"> 
+			Result:
+			<input type="text" name="result"> 
+
+			<input type="button" name="submit" onClick="calc();" value="submit"> 
+		</form>
+	</body>
+</html>

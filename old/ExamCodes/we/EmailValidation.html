@@ -1,0 +1,33 @@
+<html>
+	<head>
+		<script type="text/javascript">
+
+		function validate()
+		{
+			var a = document.info.email.value;
+			var i = a.indexOf("@");
+			if(i==-1)
+			{
+				alert("Invalid Email Id!");
+			}
+			else
+			{
+				alert("Valid Email Id!");
+			}
+
+		}
+		</script>
+	</head>
+
+	<body>
+		<form name="info" method="get">
+			Name:
+			<input type="text" name="f_name"> <br>
+
+			Email_id:
+			<input type="text" name="email"> <br>
+			
+			<input type="submit" value="submit" onClick="validate();">
+		</form>
+	</body>
+</html>

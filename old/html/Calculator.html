@@ -1,0 +1,50 @@
+<html>
+	<head>
+		<script type="text/javascript">
+
+		function calculate()
+		{
+			var a = parseFloat(document.info.operand1.value);
+			var op = document.info.operation.value;
+			var b = parseFloat(document.info.operand2.value);
+			 
+			var result = document.getElementById("result");
+    		
+    		if(op=="+")
+    		{
+    			result.value = a+b;
+    		}	
+    		else if(op=="-")
+    		{
+    			result.value = a-b;
+    		}
+    		else if(op=="*")
+    		{
+    			result.value = a*b;
+    		}
+    		else if(op="/")
+    		{
+    			result.value = a/b;
+    		}
+		}
+		</script>
+	</head>
+
+	<body>
+		<form name="info" method="get">
+			Operand 1:
+			<input type="text" name="operand1"> 
+
+			Operation :
+			<input type="text" name="operation">
+			
+			Operand 2:
+			<input type="text" name="operand2">
+
+			<input type="submit" value="submit" onClick="calculate();">
+
+			Result:
+			<input type="text" name="result" id="result">
+		</form>
+	</body>
+</html>

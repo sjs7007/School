@@ -1,0 +1,34 @@
+#mommy{
+	border: 3px solid blue;
+	display: -webkit-box;
+	-webkit-box-orient:horizontal; 
+	-webkit-box-direction:reverse;
+}
+
+#kid1{
+	border: 2px solid red;
+	background:green;
+	padding: 20px;
+	margin: 10px;
+}
+
+#kid2{
+	border: 2px solid red;
+	background:yellow;
+	padding: 20px;
+	margin: 10px;
+}
+
+#kid3{
+	border: 2px solid red;
+	background:red;
+	padding: 20px;
+	margin: 10px;
+}
+
+#kid4{
+	border: 2px solid red;
+	background:orange;
+	padding: 20px;
+	margin: 10px;
+}

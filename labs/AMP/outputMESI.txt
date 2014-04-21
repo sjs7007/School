@@ -1,0 +1,73 @@
+Caches before :-
+Cache 0.
+Page		Data		Status
+0		0		Invalid
+0		0		Invalid
+0		0		Invalid
+0		0		Invalid
+Cache 1.
+Page		Data		Status
+3		30		Exclusive
+5		50		Exclusive
+0		0		Invalid
+0		0		Invalid
+Cache 2.
+Page		Data		Status
+2		20		Exclusive
+0		0		Invalid
+0		0		Invalid
+0		0		Invalid
+Cache 3.
+Page		Data		Status
+4		40		Exclusive
+0		0		Invalid
+0		0		Invalid
+0		0		Invalid
+Try to fetch page 3 from cache 0.....
+Cache miss in Cache 0.
+Fetching from main memory.....
+Page Number : 3
+Data : 30
+Status : U
+Cache miss in Cache 0.
+Cache hit in Cache 1.
+Cache miss in Cache 2.
+Cache miss in Cache 3.
+Page added to cache 0 with state : S.
+Try to fetch page 3 from cache 0.....
+Cache hit in Cache 0.
+From Cache :-
+Page Number : 3
+Data : 30
+Status : S
+Try to fetch page 4 from cache 3......
+Cache hit in Cache 3.
+From Cache :-
+Page Number : 4
+Data : 40
+Status : E
+Caches after above operations : -
+Cache 0.
+Page		Data		Status
+3		30		Shared
+0		0		Invalid
+0		0		Invalid
+0		0		Invalid
+Cache 1.
+Page		Data		Status
+3		30		Shared
+5		50		Exclusive
+0		0		Invalid
+0		0		Invalid
+Cache 2.
+Page		Data		Status
+2		20		Exclusive
+0		0		Invalid
+0		0		Invalid
+0		0		Invalid
+Cache 3.
+Page		Data		Status
+4		40		Exclusive
+0		0		Invalid
+0		0		Invalid
+0		0		Invalid
