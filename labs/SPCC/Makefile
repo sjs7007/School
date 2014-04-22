@@ -1,13 +1,18 @@
+.PHONY: all
+
 compile: 
-	javac $(file).java
+	javac $(f).java
 
-run:
-	cp $(file).java $(file).txt #copy java program to text file
-	cat ../common/oBegins.txt >> combinedText/$(file).txt  #append output begins string 
-	java $(file) | tee -a combinedText/$(file).txt #append output to above text file
-	cat ../common/end.txt >> combinedText/$(file).txt #append dashes which signify end of output
-
-all: compile run clean
+run: 
+	cp $(f).java combinedText/$(f).txt #copy java program to text file
+	cat ../common/oBegins.txt >> combinedText/$(f).txt  #append output begins string 
+	java $(f) | tee -a combinedText/$(f).txt #append output to above text file
+	cat ../common/end.txt >> combinedText/$(f).txt #append dashes which signify end of output
 
 clean: 
 	rm *.class
+
+all: createDirectory compile run clean
+
+createDirectory:
+	mkdir -p combinedText #create directory if not present
