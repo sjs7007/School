@@ -1,0 +1,15 @@
+
+--------------------------------------
+Output :-
+
+First for S : b e 
+First for A : b e 
+First for Z : c a x 
+-----------------------------
+--------------------------------------
+Output :-
+
+First for S : b e 
+First for A : b e 
+First for Z : c a x 
+-----------------------------
