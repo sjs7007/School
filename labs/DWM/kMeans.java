@@ -130,23 +130,12 @@ class kMeans
 {
 	public static void main(String args[])
 	{
-		/*Cluster C = new Cluster(1);
-		C.add(1);
-		C.add(2);
-		C.add(3);
-		C.add(4);
-		C.display();
-		C.reCalculateMean();
-		C.display();*/
 		Scanner ip = new Scanner(System.in);
 		int n1,n2,i=0;
-
 		System.out.print("Enter number of numbers and clusters : ");
 		n1=ip.nextInt();
 		n2=ip.nextInt();
-		ClusterList CList = new ClusterList(n1,n2);
-
-		
+		ClusterList CList = new ClusterList(n1,n2);	
 		do
 		{
 			i++;
@@ -154,14 +143,5 @@ class kMeans
 			CList.assignClusters();
 		}
 		while(CList.meanChange!=0);
-
-	//	CList.displayAllClusters();
-		//	CList.displayAllClusters();
-
-		
-		//reInitialize
-		
 	}
-
-	
 }
