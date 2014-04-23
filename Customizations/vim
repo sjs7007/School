@@ -17,6 +17,8 @@ map <F5> :w<enter> :!clear && g++ -o somename % && ./somename <CR>
 map <F6> :w<enter> :!clear && javac % ; java `basename % .java` <CR>
 map <F7> :w<enter> :!clear && python % <CR>
 
+map <F8> :w<enter> :!clear;make all f=`basename % .java` <CR>
+
 "java completions
 ":imap sp System.out.println("");
 
