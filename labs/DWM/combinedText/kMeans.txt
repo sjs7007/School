@@ -1,0 +1,14 @@
+// K means 
+
+class kMeans
+{
+	public static void main(String args[])
+	{
+
+	}
+}
+
+--------------------------------------
+Output :-
+
+-----------------------------

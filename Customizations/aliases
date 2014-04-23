@@ -53,3 +53,6 @@ alias recusb='bash ~/recUSB.sh'
 alias nk='killall -9 node; foreman start'
 alias her='git add . ; git commit -m "test";git push heroku master'
 alias gither='git add -A;git commit -m "heroku";git push heroku;git pull;git push'
+
+#makefiles
+alias m='make all '
