@@ -1,4 +1,4 @@
-//Page Rank
+//Page Rank : http://www.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture3/lecture3.html
 
 import java.util.*;
 
