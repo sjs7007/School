@@ -44,5 +44,23 @@ class Apriori
 
 		System.out.println("Large Item Set : "+largeSet);
 
+		//form new candidate set of size last+1
+		cSet = new ArrayList<TreeSet<Integer>>();
+		for(int i=0;i<largeSet.size();i++)
+		{
+			for(int j=i+1;j< largeSet.size();j++)
+			{
+				TreeSet<Integer> temp = new TreeSet<Integer>();
+				temp.addAll(largeSet.get(i));
+				temp.addAll(largeSet.get(j));
+				if(temp.size()==2 && !cSet.contains(temp)) //should be of last+1 size and not already be present in new cSet
+				{
+					cSet.add(temp);
+				}
+			}
+		}
+
+		System.out.println("New Candidate Set : "+cSet);
+
 	}
 }
