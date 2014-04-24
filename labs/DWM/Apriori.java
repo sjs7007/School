@@ -1,12 +1,16 @@
-import java.util.*;
+//Apriori
+//References : https://github.com/sjs7007/Learn/blob/master/DataStructures/javaSets.java
+//http://stackoverflow.com/questions/2490178/how-to-use-java-set
+
+import java.util.*; //for treeset
 
 class Apriori
 {
 	public static void main(String args[])
 	{
 		int nTrans=4,nItems=5,confidenceValue=2,setSize=1;
-		ArrayList<TreeSet<Integer>> transList = new ArrayList<TreeSet<Integer>>();
-		transList.add(new TreeSet<Integer>(Arrays.asList(1,2,4)));
+		ArrayList<TreeSet<Integer>> transList = new ArrayList<TreeSet<Integer>>(); /*store transactions here*/
+	 	transList.add(new TreeSet<Integer>(Arrays.asList(1,2,4)));  
 		transList.add(new TreeSet<Integer>(Arrays.asList(2,3,5)));
 		transList.add(new TreeSet<Integer>(Arrays.asList(1,2,3,5)));
 		transList.add(new TreeSet<Integer>(Arrays.asList(2,5)));
@@ -45,8 +49,8 @@ class Apriori
 			}
 
 			System.out.println("Large Item Set of size "+setSize+" : "+largeSet);
-
-			//form new candidate set of size last+1
+			
+			//form new candidate sets of last size +1
 			cSet = new ArrayList<TreeSet<Integer>>();
 			setSize++;
 			
@@ -63,7 +67,6 @@ class Apriori
 					}
 				}
 			}
-
 			System.out.println("New Candidate Set of size "+setSize+": "+cSet);
 			System.out.println();
 		}
