@@ -1,8 +1,8 @@
 class item
 {
-	float x, y;
+	double x, y;
 
-	item(float a,float b)
+	item(double a,double b)
 	{
 		x=a;
 		y=b;
@@ -23,23 +23,23 @@ class Cluster
 
 class clusterList
 {
-	int nClusters;
-	Cluster cList[];
+	int nClusters=0;
+	Cluster cList[]=new Cluster[100];
 
 	clusterList(int x)
 	{
 		nClusters=x;
-		cList = new Cluster[nClusters];
+		//cList = new Cluster[nClusters];
 	}
 
-	float findMinDistance(Cluster C1,Cluster C2) //find min. distance between two clusters
+	double findMinDistance(Cluster C1,Cluster C2) //find min. distance between two clusters
 	{
-		float minDistance=9999;
+		double minDistance=9999;
 		for(int i=0;i<C1.size;i++)
 		{
 			for(int j=0;j<C2.size;j++)
 			{
-				float temp =Math.abs(C1.itemList[i].x * C1.itemList[i].x - C2.itemList[j].y *C2.itemList[j].y);
+				double temp =Math.abs(Math.pow(C1.itemList[i].x - C2.itemList[j].x,2) + Math.pow(C1.itemList[i].y - C2.itemList[j].y,2));
 				if(temp<minDistance)
 				{
 					minDistance = temp;
@@ -47,6 +47,29 @@ class clusterList
 			}
 		}
 		return minDistance;
+	}
+
+	void addCluster(Cluster C)
+	{
+		cList[nClusters]=C;
+		nClusters++;
+	}
+
+	void findMatrix()
+	{
+		for(int i=0;i<nClusters;i++)
+		{
+			for(int j=i+1;j<nClusters;j++)
+			{
+				double temp = findMinDistance(cList[i],cList[j]);
+				System.out.print(temp+"\t");
+				if(temp<=1)
+				{
+					System.out.println("\nJoin Cluster "+(i+1)+" and "+"Cluster "+j);
+				}
+			}
+			System.out.println();
+		}
 	}
 }
 
@@ -66,14 +89,22 @@ class Agglomerative
 		itemList[3].y=4;
 		itemList[4].x=3;
 		itemList[4].y=5;
-		float aMatrix[][]=new float[nItems][nItems]; //adjacency matrix
+		double aMatrix[][]=new double[nItems][nItems]; //adjacency matrix
 		*/
-		clusterList C = new clusterList(2);
+		clusterList C = new clusterList(5);
 		C.cList[0]=new Cluster(1);
 		C.cList[1]=new Cluster(1);
-		C.cList[0].itemList[0]=new item(1,1);
-		C.cList[1].itemList[0]=new item(2,2);
+		C.cList[2]=new Cluster(1);
+		C.cList[3]=new Cluster(1);
+		C.cList[4]=new Cluster(1);
+		C.cList[0].itemList[0]=new item(1,2);
+		C.cList[1].itemList[0]=new item(2,3);
+		C.cList[2].itemList[0]=new item(4,4);
+		C.cList[3].itemList[0]=new item(5,4);
+		C.cList[4].itemList[0]=new item(3,6);
 
-		System.out.println(C.findMinDistance(C.cList[0],C.cList[1]));
+		//System.out.println(C.findMinDistance(C.cList[0],C.cList[1]));
+		
+		C.findMatrix();
 	}
 }
