@@ -1,0 +1,84 @@
+class logicalPhysical
+{
+	public static void main(String args[])
+	{
+		//System.out.println(randString());
+		String selector="0000000000110001";
+		String offset="0000000000000001";
+		String indexIntoDesc=selector.substring(0,13); //extract 1st 13 bits
+		System.out.println("Index : "+indexIntoDesc);
+		int decimalIndex = Integer.parseInt(indexIntoDesc,2); //convert from binary to decimal
+		System.out.println("Decimal Index : "+decimalIndex);
+		String localTable[]=new String[10];
+		String globalTable[]=new String[10];
+		System.out.println("Local Table :-");
+		for(int i=0;i<localTable.length;i++)
+		{
+			localTable[i]=randString();
+			System.out.println(i+" "+localTable[i]);
+		}
+		System.out.println("Global Table :-");
+		for(int i=0;i<globalTable .length;i++)
+		{
+			globalTable [i]=randString();
+			System.out.println(i+" "+globalTable [i]);
+		}
+		//0-Global Table,1-local table
+		String answer="",temp32RightBits="";
+		if(selector.charAt(13)=='0')
+		{
+			System.out.println("Global descriptor.");
+			temp32RightBits=globalTable[decimalIndex].substring(32,64);
+		}
+		else
+		{
+			System.out.println("Local descriptor");
+			temp32RightBits=localTable[decimalIndex].substring(32,64);
+		}
+		System.out.println(temp32RightBits);
+		answer = Long.toBinaryString(Long.parseLong(temp32RightBits,2)+Long.parseLong(offset,2));
+		System.out.println("32-bit Physical Address : "+answer);
+	}
+
+	public static String randString() //generate a random binary string of 64 bits
+	{
+		String temp="";
+		for(int i=0;i<64;i++)
+		{
+			temp = temp + Integer.toString((int)(Math.random()*100)%2);
+		}
+		return temp;
+	}
+}
+
+--------------------------------------
+Output :-
+
+Index : 0000000000110
+Decimal Index : 6
+Local Table :-
+0 1110000101001001110011101011001010110011001100001011000111110101
+1 0101111010111010101101010000010100011101111111010011101111101010
+2 1011101000101111111011111000111000011000110111101111101001101011
+3 0110100010111100111101011111111011110110100101011011011011111011
+4 0110001000001111101000110000010001010001011101110010111010011110
+5 1101111001011001110010011011101010010101010011110110011110000100
+6 1110101001110010011101101001010110101110001101011111111111010111
+7 0110001110011000110000111111011111100111010000111101100101010111
+8 0000110110001100010000101101110101101000110100111010001010010010
+9 1011101001001111001110011010010011100100000000000110000101000011
+Global Table :-
+0 0111111110000111100001111101000010111001101010010010111111010000
+1 1000101011000010000110011101111000100111111111000111010110101111
+2 1101100011010001011111001101100111001110011000101100000101001010
+3 1111001011101100011111000010111010110011001011101101011010010101
+4 1101111011110011010101000110010101000110101101001101001100101111
+5 0000101110101111110001100111101101001110001100111101111101000110
+6 0000100011100010111001101001000000000101101011010001101100000110
+7 0111011101110100011111100100011110011100110111010001110111101111
+8 0000110110100000110011100010100001001010110011001001110111000011
+9 1010111101000111011101101010011001000101000101110001000100000011
+Global descriptor.
+00000101101011010001101100000110
+32-bit Physical Address : 101101011010001101100000111
+-----------------------------

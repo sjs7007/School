@@ -5,7 +5,7 @@ echo `date` | cat >> ~/cron/syncDown3Log
 #rsync --partial --progress -h -a ~/Desktop/Dropbox/00GRE ~/Desktop/toAce/GRE
 
 #lab codes
-cp `find /home/shin/School/labs -name "*.txt"` /home/shin/Desktop/Dropbox/000Labs/textCombinedAll/ ; rm /home/shin/Desktop/Dropbox/000Labs/textCombinedAll/end.txt ; rm /home/shin/Desktop/Dropbox/000Labs/textCombinedAll/oBegins.txt 
+cp `find /home/shin/School/labs -name "*.txt"` /home/shin/School/labs/textCombinedAll ; rm /home/shin/School/labs/textCombinedAll/end.txt ; rm /home/shin/School/labs/textCombinedAll/oBegins.txt 
 
 #random
 mv ~/Downloads/*.mp4 ~/Downloads/raspi/puppies
