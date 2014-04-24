@@ -2,7 +2,10 @@
 echo `date` | cat >> ~/cron/syncDown3Log
 
 #GRE
-rsync --partial --progress -h -a ~/Desktop/Dropbox/00GRE ~/Desktop/toAce/GRE
+#rsync --partial --progress -h -a ~/Desktop/Dropbox/00GRE ~/Desktop/toAce/GRE
+
+#lab codes
+cp `find /home/shin/School/labs -name "*.txt"` /home/shin/Desktop/Dropbox/000Labs/textCombinedAll/ ; rm /home/shin/Desktop/Dropbox/000Labs/textCombinedAll/end.txt ; rm /home/shin/Desktop/Dropbox/000Labs/textCombinedAll/oBegins.txt 
 
 #random
 mv ~/Downloads/*.mp4 ~/Downloads/raspi/puppies
