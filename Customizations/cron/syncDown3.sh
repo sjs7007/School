@@ -6,6 +6,10 @@ echo `date` | cat >> ~/cron/syncDown3Log
 
 #lab codes
 cp `find /home/shin/School/labs -name "*.txt"` /home/shin/School/labs/textCombinedAll ; rm /home/shin/School/labs/textCombinedAll/end.txt ; rm /home/shin/School/labs/textCombinedAll/oBegins.txt 
+rsync -a --partial -h --progress /home/shin/School/labs/ /home/shin/Desktop/toAce/labs/
+rsync -a --partial -h --progress /home/shin/School/labs/ /home/shin/Desktop/toAce/labs/
+rsync -a --partial -h --progress /home/shin/School/labs/textCombinedAll/ /home/shin/Desktop/toAce/textCombinedAll/
+
 
 #random
 mv ~/Downloads/*.mp4 ~/Downloads/raspi/puppies
