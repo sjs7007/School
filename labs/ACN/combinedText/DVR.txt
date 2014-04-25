@@ -17,7 +17,7 @@ class Record //Individual Cell of a Router Table
 class routerTable
 {
 	Scanner ip = new Scanner(System.in);
-	int nTotalNetworks=7,nCurrentNetworks; //total networks, networks currently present in router table
+	int nTotalNetworks=7+1,nCurrentNetworks; //total networks, networks currently present in router table
 	char name; //A,B,C....etc
 	char routersDirectlyConnected[]=new char[100];
 	int nDirect;
@@ -33,7 +33,7 @@ class routerTable
 	void displayRouterTable()
 	{
 		System.out.println("Router Table for "+name+" :- ");
-		for(int i=0;i<nTotalNetworks;i++)
+		for(int i=1;i<nTotalNetworks;i++)
 		{
 			if(recordList[i]!=null)
 			{
@@ -64,6 +64,13 @@ class routerTable
 		}
 		System.out.println();
 	}
+
+	void addEntry(int net,int hop,char next) //add new entry to router tables
+	{
+		recordList[net]=new Record(net,hop);
+		recordList[net].next=next;
+		nCurrentNetworks++;
+	}
 }
 
 class DVR
@@ -71,7 +78,7 @@ class DVR
 	public static void main(String args[])
 	{
 		Scanner ip = new Scanner(System.in);
-		int nRouters=1;
+		int nRouters=4;
 		char temp='A';
 		routerTable routerList[]=new routerTable[nRouters];
 		for(int i=0;i<nRouters;i++)
@@ -81,6 +88,8 @@ class DVR
 			routerList[i].inputDataFirst();
 			temp++;
 		}
+		displayRouterTables(routerList);
+		AtoB(routerList[0],routerList[1]);
 		displayRouterTables(routerList);
 	}
 
@@ -92,17 +101,84 @@ class DVR
 			System.out.println("--------------------");
 		}
 	}
+
+	public static void AtoB(routerTable A,routerTable B) //router A sends information to router B
+	{
+		for(int i=0;i<A.nTotalNetworks;i++)
+		{
+			for(int j=0;j<B.nTotalNetworks;j++)
+			{
+				if(A.recordList[i]!=null && B.recordList[i]==null)
+				{
+					B.addEntry(A.recordList[i].networkID,A.recordList[i].hop+1,A.name);
+				}
+				else if(A.recordList[i]!=null && B.recordList[i]!=null)
+				{
+					if((A.recordList[i].hop+1)<B.recordList[i].hop)
+					{
+						B.recordList[i].hop=A.recordList[i].hop+1;
+						B.recordList[i].next=A.name;
+					}
+				}
+			}
+		}
+	}
 }
 
 --------------------------------------
 Output :-
 
 Enter number of Networks and number of Routers directly connected to Router A : Enter networks connected to Router A : Enter routers directly connected to Router A : 
+Enter number of Networks and number of Routers directly connected to Router B : Enter networks connected to Router B : Enter routers directly connected to Router B : 
+Enter number of Networks and number of Routers directly connected to Router C : Enter networks connected to Router C : Enter routers directly connected to Router C : 
+Enter number of Networks and number of Routers directly connected to Router D : Enter networks connected to Router D : Enter routers directly connected to Router D : 
 Router Table for A :- 
 Net1 1 -
 Net2 1 -
 Net4 1 -
 Net5 1 -
 Routers directly connected to Router A : B C D 
+--------------------
+Router Table for B :- 
+Net2 1 -
+Net3 1 -
+Net6 1 -
+Routers directly connected to Router B : A C 
+--------------------
+Router Table for C :- 
+Net5 1 -
+Net6 1 -
+Net7 1 -
+Routers directly connected to Router C : A B 
+--------------------
+Router Table for D :- 
+Net4 1 -
+Routers directly connected to Router D : A 
+--------------------
+Router Table for A :- 
+Net1 1 -
+Net2 1 -
+Net4 1 -
+Net5 1 -
+Routers directly connected to Router A : B C D 
+--------------------
+Router Table for B :- 
+Net1 2 A
+Net2 1 -
+Net3 1 -
+Net4 2 A
+Net5 2 A
+Net6 1 -
+Routers directly connected to Router B : A C 
+--------------------
+Router Table for C :- 
+Net5 1 -
+Net6 1 -
+Net7 1 -
+Routers directly connected to Router C : A B 
+--------------------
+Router Table for D :- 
+Net4 1 -
+Routers directly connected to Router D : A 
 --------------------
 -----------------------------

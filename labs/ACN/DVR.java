@@ -17,7 +17,7 @@ class Record //Individual Cell of a Router Table
 class routerTable
 {
 	Scanner ip = new Scanner(System.in);
-	int nTotalNetworks=7,nCurrentNetworks; //total networks, networks currently present in router table
+	int nTotalNetworks=7+1,nCurrentNetworks; //total networks, networks currently present in router table
 	char name; //A,B,C....etc
 	char routersDirectlyConnected[]=new char[100];
 	int nDirect;
@@ -33,7 +33,7 @@ class routerTable
 	void displayRouterTable()
 	{
 		System.out.println("Router Table for "+name+" :- ");
-		for(int i=0;i<nTotalNetworks;i++)
+		for(int i=1;i<nTotalNetworks;i++)
 		{
 			if(recordList[i]!=null)
 			{
@@ -64,6 +64,13 @@ class routerTable
 		}
 		System.out.println();
 	}
+
+	void addEntry(int net,int hop,char next) //add new entry to router tables
+	{
+		recordList[net]=new Record(net,hop);
+		recordList[net].next=next;
+		nCurrentNetworks++;
+	}
 }
 
 class DVR
@@ -71,7 +78,7 @@ class DVR
 	public static void main(String args[])
 	{
 		Scanner ip = new Scanner(System.in);
-		int nRouters=1;
+		int nRouters=4;
 		char temp='A';
 		routerTable routerList[]=new routerTable[nRouters];
 		for(int i=0;i<nRouters;i++)
@@ -82,6 +89,8 @@ class DVR
 			temp++;
 		}
 		displayRouterTables(routerList);
+		AtoB(routerList[0],routerList[1]);
+		displayRouterTables(routerList);
 	}
 
 	public static void displayRouterTables(routerTable  x[])
@@ -90,6 +99,28 @@ class DVR
 		{
 			x[i].displayRouterTable();
 			System.out.println("--------------------");
+		}
+	}
+
+	public static void AtoB(routerTable A,routerTable B) //router A sends information to router B
+	{
+		for(int i=0;i<A.nTotalNetworks;i++)
+		{
+			for(int j=0;j<B.nTotalNetworks;j++)
+			{
+				if(A.recordList[i]!=null && B.recordList[i]==null)
+				{
+					B.addEntry(A.recordList[i].networkID,A.recordList[i].hop+1,A.name);
+				}
+				else if(A.recordList[i]!=null && B.recordList[i]!=null)
+				{
+					if((A.recordList[i].hop+1)<B.recordList[i].hop)
+					{
+						B.recordList[i].hop=A.recordList[i].hop+1;
+						B.recordList[i].next=A.name;
+					}
+				}
+			}
 		}
 	}
 }
