@@ -1,0 +1,20 @@
+//Client for Math Function
+
+import java.io.*;
+import java.net.*;
+import java.util.*;
+import java.rmi.*;
+
+class mathFunctionClient
+{
+	public static void main(String args[]) throws IOException
+	{
+		Socket clientSocket = new Socket("localhost",1994);
+
+		DataInputStream fromServer = new DataInputStream(clientSocket.getInputStream());
+		PrintStream toServer = new PrintStream(clientSocket.getOutputStream());
+
+		String response = fromServer.readLine();
+		System.out.println(response);
+	}
+}
