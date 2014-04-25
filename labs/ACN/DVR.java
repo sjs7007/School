@@ -89,7 +89,27 @@ class DVR
 			temp++;
 		}
 		displayRouterTables(routerList);
-		AtoB(routerList[0],routerList[1]);
+		//AtoB(routerList[0],routerList[1]);
+		//displayRouterTables(routerList);
+
+		//for(int k=0;k<5;k++)
+		while(!allFilled(routerList))
+		{
+			for(int i=0;i<nRouters;i++)
+			{
+				for(int j=0;j<routerList[i].nDirect;j++)
+				{
+					int netID = (int)(routerList[i].routersDirectlyConnected[j]-'A');
+					if(i!=j)
+					{
+						//System.out.println(routerList[i].name+" "+routerList[netID].name);
+						AtoB(routerList[i],routerList[netID]);
+					}
+				}
+			}
+			allFilled(routerList);			
+		}
+
 		displayRouterTables(routerList);
 	}
 
@@ -106,21 +126,33 @@ class DVR
 	{
 		for(int i=0;i<A.nTotalNetworks;i++)
 		{
-			for(int j=0;j<B.nTotalNetworks;j++)
+			if(A.recordList[i]!=null && B.recordList[i]==null)
 			{
-				if(A.recordList[i]!=null && B.recordList[i]==null)
+				B.addEntry(A.recordList[i].networkID,A.recordList[i].hop+1,A.name);
+			}
+			else if(A.recordList[i]!=null && B.recordList[i]!=null)
+			{
+				if((A.recordList[i].hop+1)<B.recordList[i].hop)
 				{
-					B.addEntry(A.recordList[i].networkID,A.recordList[i].hop+1,A.name);
-				}
-				else if(A.recordList[i]!=null && B.recordList[i]!=null)
-				{
-					if((A.recordList[i].hop+1)<B.recordList[i].hop)
-					{
-						B.recordList[i].hop=A.recordList[i].hop+1;
-						B.recordList[i].next=A.name;
-					}
-				}
+					B.recordList[i].hop=A.recordList[i].hop+1;
+					B.recordList[i].next=A.name;
+				}		
 			}
 		}
+	}
+
+	public static boolean allFilled(routerTable x[])
+	{
+		boolean flag=true;
+		for(int i=0;i<x.length;i++)
+		{
+			//System.out.println(x[i].nCurrentNetworks);
+			if(x[i].nCurrentNetworks!=7)
+			{
+				flag=false;
+				break;
+			}
+		}
+		return flag;
 	}
 }
