@@ -156,3 +156,86 @@ class DVR
 		return flag;
 	}
 }
+
+/* Output  : 
+
+   Enter number of Networks and number of Routers directly connected to Router A : 4 3 
+   Enter networks connected to Router A : 1 2 4 5
+   Enter routers directly connected to Router A : B C D
+
+   Enter number of Networks and number of Routers directly connected to Router B : 3 2
+   Enter networks connected to Router B : 2 3 6
+   Enter routers directly connected to Router B : A C
+
+   Enter number of Networks and number of Routers directly connected to Router C : 3 2
+   Enter networks connected to Router C : 5 6 7
+   Enter routers directly connected to Router C : A B 
+
+   Enter number of Networks and number of Routers directly connected to Router D : 1 1
+   Enter networks connected to Router D : 4
+   Enter routers directly connected to Router D : A
+
+   Router Table for A :- 
+   Net1 1 -
+   Net2 1 -
+   Net4 1 -
+   Net5 1 -
+   Routers directly connected to Router A : B C D 
+   --------------------
+   Router Table for B :- 
+   Net2 1 -
+   Net3 1 -
+   Net6 1 -
+   Routers directly connected to Router B : A C 
+   --------------------
+   Router Table for C :- 
+   Net5 1 -
+   Net6 1 -
+   Net7 1 -
+   Routers directly connected to Router C : A B 
+   --------------------
+   Router Table for D :- 
+   Net4 1 -
+   Routers directly connected to Router D : A 
+   --------------------
+   Router Table for A :- 
+   Net1 1 -
+   Net2 1 -
+   Net3 2 B
+   Net4 1 -
+   Net5 1 -
+   Net6 2 B
+   Net7 2 C
+   Routers directly connected to Router A : B C D 
+   --------------------
+   Router Table for B :- 
+   Net1 3 C
+   Net2 1 -
+   Net3 1 -
+   Net4 3 C
+   Net5 2 C
+   Net6 1 -
+   Net7 2 C
+   Routers directly connected to Router B : A C 
+   --------------------
+   Router Table for C :- 
+   Net1 2 A
+   Net2 2 A
+   Net3 3 A
+   Net4 2 A
+   Net5 1 -
+   Net6 1 -
+   Net7 1 -
+   Routers directly connected to Router C : A B 
+   --------------------
+	Router Table for D :- 
+	Net1 2 A
+	Net2 2 A
+	Net3 3 A
+	Net4 1 -
+	Net5 2 A
+	Net6 3 A
+	Net7 3 A
+	Routers directly connected to Router D : A 
+	--------------------
+*/
