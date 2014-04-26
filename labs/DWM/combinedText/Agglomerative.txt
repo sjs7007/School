@@ -1,3 +1,5 @@
+//Agglomerative single link
+
 class item
 {
 	double x, y;
@@ -17,12 +19,10 @@ class Cluster
 	Cluster(int x)
 	{
 		size=x;
-		//itemList = new item[size];
 	}
 
 	void displayCluster()
 	{
-		//System.out.println("Cluster:-");
 		for(int i=0;i<size;i++)
 		{
 			System.out.println(itemList[i].x+" "+itemList[i].y);
@@ -35,11 +35,10 @@ class clusterList
 	int nClusters=0;
 	Cluster cList[]=new Cluster[100];
 
-	/*clusterList(int x)
+	clusterList(int x)
 	{
 		nClusters=x;
-		//cList = new Cluster[nClusters];
-	}*/
+	}
 
 	double findMinDistance(Cluster C1,Cluster C2) //find min. distance between two clusters
 	{
@@ -55,6 +54,7 @@ class clusterList
 				}
 			}
 		}
+		minDistance = Math.sqrt(minDistance);
 		return minDistance;
 	}
 
@@ -66,7 +66,7 @@ class clusterList
 
 	clusterList findMatrix(int threshold) //along with it form next set of clusters and return it 
 	{
-		clusterList nextSet = new clusterList();
+		clusterList nextSet = new clusterList(0);
 		boolean avail[]=new boolean[nClusters];
 		for(int i=0;i<nClusters;i++)
 		{
@@ -80,39 +80,37 @@ class clusterList
 				System.out.println("Distance between Cluster "+(i+1)+" and "+(j+1)+" is : "+temp);
 				if(temp<=threshold)
 				{
-					//System.out.print("  Join Cluster "+(i+1)+" and "+"Cluster "+(j+1)+"  ");
-					//mergeClusters(cList[0],cList[1]);
 					//if distance < threshold, join those clusters and remove them from avail clusters
 					if(avail[i]==true && avail[j]==true)
 					{
-						System.out.println("Merge clusters "+(i+1)+" and "+(j+1)+" and add it to next set.");
+						System.out.println("Merge clusters "+(i+1)+" and "+(j+1)+".");
 						nextSet.addCluster(mergeClusters(cList[i],cList[j]));
-						//nextSet.nClusters++;
-						//Cluster x = mergeClusters(cList[i],cList[j]);					
-						//x.displayCluster();
 						avail[i]=false;
 						avail[j]=false;
 					}
 				}
 			}	
-			System.out.println();
 		}
 		for(int i=0;i<nClusters;i++)
 		{
 			if(avail[i]==true)
 			{
-				System.out.println("Add Cluster "+(i+1)+" to next set.");
+				//System.out.println("Add Cluster "+(i+1)+" to next set.");
 				nextSet.addCluster(cList[i]);
 			}
 		}
 		System.out.println("New Clusters are :-");
-		for(int i=0;i<nextSet.nClusters;i++)
-		{
-			Cluster x = nextSet.cList[i];
-			System.out.println("Cluster "+(i+1)+" : -");
-			x.displayCluster();
-		}
+		nextSet.displayClusterList();
 		return nextSet;
+	}
+
+	void displayClusterList()
+	{
+		for(int i=0;i<nClusters;i++)
+		{
+			System.out.println("Cluster "+(i+1)+" : -");
+			cList[i].displayCluster();
+		}
 	}
 
 	Cluster mergeClusters(Cluster C1,Cluster C2)
@@ -128,8 +126,6 @@ class clusterList
 		{
 			C3.itemList[n1+i] = C2.itemList[i];
 		}
-		//System.out.println("Merged Cluster : -");
-		//C3.displayCluster();
 		return C3;
 	}
 
@@ -139,22 +135,7 @@ class Agglomerative
 {
 	public static void main(String args[])
 	{
-		/*int nItems=5;
-		item itemList[]=new item[nItems];
-		itemList[0].x=1;
-		itemList[0].y=2;
-		itemList[1].x=2;
-		itemList[1].y=3;
-		itemList[2].x=4;
-		itemList[2].y=4;
-		itemList[3].x=5;
-		itemList[3].y=4;
-		itemList[4].x=3;
-		itemList[4].y=5;
-		double aMatrix[][]=new double[nItems][nItems]; //adjacency matrix
-		*/
-		clusterList C = new clusterList();
-		C.nClusters=5;
+		clusterList C = new clusterList(5);
 		C.cList[0]=new Cluster(1);
 		C.cList[1]=new Cluster(1);
 		C.cList[2]=new Cluster(1);
@@ -166,51 +147,33 @@ class Agglomerative
 		C.cList[3].itemList[0]=new item(5,4);
 		C.cList[4].itemList[0]=new item(3,6);
 
-		//System.out.println(C.findMinDistance(C.cList[0],C.cList[1]));
-		
-		//C.findMatrix();
-		//Cluster C3 = C.mergeClusters(C.cList[0],C.cList[1]);
-		//clusterList C2 = C.findMatrix(1);
-		//C2=C2.findMatrix(2);
-		//C.cList[0].displayCluster();
-		//C2.cList[0].displayCluster();
-		//C2.findMatrix(2);
 		int i=1;
 		do
-		{	System.out.println("Threshold for merging clusters is : "+i+".");
+		{	
+			System.out.println("Threshold for merging clusters is : "+i+".");
 			C = C.findMatrix(i);
+			System.out.println("------------------------");
 			i++;
 		}
 		while(C.cList[0].size!=5);
-
-	}
-
-	
+	}		
 }
 
 --------------------------------------
 Output :-
 
 Threshold for merging clusters is : 1.
-Distance between Cluster 1 and 2 is : 2.0
-Distance between Cluster 1 and 3 is : 13.0
-Distance between Cluster 1 and 4 is : 20.0
-Distance between Cluster 1 and 5 is : 20.0
-
-Distance between Cluster 2 and 3 is : 5.0
-Distance between Cluster 2 and 4 is : 10.0
-Distance between Cluster 2 and 5 is : 10.0
-
+Distance between Cluster 1 and 2 is : 1.4142135623730951
+Distance between Cluster 1 and 3 is : 3.605551275463989
+Distance between Cluster 1 and 4 is : 4.47213595499958
+Distance between Cluster 1 and 5 is : 4.47213595499958
+Distance between Cluster 2 and 3 is : 2.23606797749979
+Distance between Cluster 2 and 4 is : 3.1622776601683795
+Distance between Cluster 2 and 5 is : 3.1622776601683795
 Distance between Cluster 3 and 4 is : 1.0
-Merge clusters 3 and 4 and add it to next set.
-Distance between Cluster 3 and 5 is : 5.0
-
-Distance between Cluster 4 and 5 is : 8.0
-
-
-Add Cluster 1 to next set.
-Add Cluster 2 to next set.
-Add Cluster 5 to next set.
+Merge clusters 3 and 4.
+Distance between Cluster 3 and 5 is : 2.23606797749979
+Distance between Cluster 4 and 5 is : 2.8284271247461903
 New Clusters are :-
 Cluster 1 : -
 4.0 4.0
@@ -221,20 +184,15 @@ Cluster 3 : -
 2.0 3.0
 Cluster 4 : -
 3.0 6.0
+------------------------
 Threshold for merging clusters is : 2.
-Distance between Cluster 1 and 2 is : 13.0
-Distance between Cluster 1 and 3 is : 5.0
-Distance between Cluster 1 and 4 is : 5.0
-
-Distance between Cluster 2 and 3 is : 2.0
-Merge clusters 2 and 3 and add it to next set.
-Distance between Cluster 2 and 4 is : 20.0
-
-Distance between Cluster 3 and 4 is : 10.0
-
-
-Add Cluster 1 to next set.
-Add Cluster 4 to next set.
+Distance between Cluster 1 and 2 is : 3.605551275463989
+Distance between Cluster 1 and 3 is : 2.23606797749979
+Distance between Cluster 1 and 4 is : 2.23606797749979
+Distance between Cluster 2 and 3 is : 1.4142135623730951
+Merge clusters 2 and 3.
+Distance between Cluster 2 and 4 is : 4.47213595499958
+Distance between Cluster 3 and 4 is : 3.1622776601683795
 New Clusters are :-
 Cluster 1 : -
 1.0 2.0
@@ -244,66 +202,24 @@ Cluster 2 : -
 5.0 4.0
 Cluster 3 : -
 3.0 6.0
+------------------------
 Threshold for merging clusters is : 3.
-Distance between Cluster 1 and 2 is : 5.0
-Distance between Cluster 1 and 3 is : 10.0
-
-Distance between Cluster 2 and 3 is : 5.0
-
-
-Add Cluster 1 to next set.
-Add Cluster 2 to next set.
-Add Cluster 3 to next set.
+Distance between Cluster 1 and 2 is : 2.23606797749979
+Merge clusters 1 and 2.
+Distance between Cluster 1 and 3 is : 3.1622776601683795
+Distance between Cluster 2 and 3 is : 2.23606797749979
 New Clusters are :-
 Cluster 1 : -
 1.0 2.0
 2.0 3.0
-Cluster 2 : -
 4.0 4.0
 5.0 4.0
-Cluster 3 : -
+Cluster 2 : -
 3.0 6.0
+------------------------
 Threshold for merging clusters is : 4.
-Distance between Cluster 1 and 2 is : 5.0
-Distance between Cluster 1 and 3 is : 10.0
-
-Distance between Cluster 2 and 3 is : 5.0
-
-
-Add Cluster 1 to next set.
-Add Cluster 2 to next set.
-Add Cluster 3 to next set.
-New Clusters are :-
-Cluster 1 : -
-1.0 2.0
-2.0 3.0
-Cluster 2 : -
-4.0 4.0
-5.0 4.0
-Cluster 3 : -
-3.0 6.0
-Threshold for merging clusters is : 5.
-Distance between Cluster 1 and 2 is : 5.0
-Merge clusters 1 and 2 and add it to next set.
-Distance between Cluster 1 and 3 is : 10.0
-
-Distance between Cluster 2 and 3 is : 5.0
-
-
-Add Cluster 3 to next set.
-New Clusters are :-
-Cluster 1 : -
-1.0 2.0
-2.0 3.0
-4.0 4.0
-5.0 4.0
-Cluster 2 : -
-3.0 6.0
-Threshold for merging clusters is : 6.
-Distance between Cluster 1 and 2 is : 5.0
-Merge clusters 1 and 2 and add it to next set.
-
-
+Distance between Cluster 1 and 2 is : 2.23606797749979
+Merge clusters 1 and 2.
 New Clusters are :-
 Cluster 1 : -
 1.0 2.0
@@ -311,4 +227,5 @@ Cluster 1 : -
 4.0 4.0
 5.0 4.0
 3.0 6.0
+------------------------
 -----------------------------
