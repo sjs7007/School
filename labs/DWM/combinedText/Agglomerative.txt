@@ -170,12 +170,18 @@ class Agglomerative
 		
 		//C.findMatrix();
 		//Cluster C3 = C.mergeClusters(C.cList[0],C.cList[1]);
-		clusterList C2 = C.findMatrix(1);
-		C2=C2.findMatrix(2);
+		//clusterList C2 = C.findMatrix(1);
+		//C2=C2.findMatrix(2);
 		//C.cList[0].displayCluster();
 		//C2.cList[0].displayCluster();
 		//C2.findMatrix(2);
-		
+		int i=1;
+		do
+		{	System.out.println("Threshold for merging clusters is : "+i+".");
+			C = C.findMatrix(i);
+			i++;
+		}
+		while(C.cList[0].size!=5);
 
 	}
 
@@ -185,6 +191,7 @@ class Agglomerative
 --------------------------------------
 Output :-
 
+Threshold for merging clusters is : 1.
 Distance between Cluster 1 and 2 is : 2.0
 Distance between Cluster 1 and 3 is : 13.0
 Distance between Cluster 1 and 4 is : 20.0
@@ -214,6 +221,7 @@ Cluster 3 : -
 2.0 3.0
 Cluster 4 : -
 3.0 6.0
+Threshold for merging clusters is : 2.
 Distance between Cluster 1 and 2 is : 13.0
 Distance between Cluster 1 and 3 is : 5.0
 Distance between Cluster 1 and 4 is : 5.0
@@ -235,5 +243,72 @@ Cluster 2 : -
 4.0 4.0
 5.0 4.0
 Cluster 3 : -
+3.0 6.0
+Threshold for merging clusters is : 3.
+Distance between Cluster 1 and 2 is : 5.0
+Distance between Cluster 1 and 3 is : 10.0
+
+Distance between Cluster 2 and 3 is : 5.0
+
+
+Add Cluster 1 to next set.
+Add Cluster 2 to next set.
+Add Cluster 3 to next set.
+New Clusters are :-
+Cluster 1 : -
+1.0 2.0
+2.0 3.0
+Cluster 2 : -
+4.0 4.0
+5.0 4.0
+Cluster 3 : -
+3.0 6.0
+Threshold for merging clusters is : 4.
+Distance between Cluster 1 and 2 is : 5.0
+Distance between Cluster 1 and 3 is : 10.0
+
+Distance between Cluster 2 and 3 is : 5.0
+
+
+Add Cluster 1 to next set.
+Add Cluster 2 to next set.
+Add Cluster 3 to next set.
+New Clusters are :-
+Cluster 1 : -
+1.0 2.0
+2.0 3.0
+Cluster 2 : -
+4.0 4.0
+5.0 4.0
+Cluster 3 : -
+3.0 6.0
+Threshold for merging clusters is : 5.
+Distance between Cluster 1 and 2 is : 5.0
+Merge clusters 1 and 2 and add it to next set.
+Distance between Cluster 1 and 3 is : 10.0
+
+Distance between Cluster 2 and 3 is : 5.0
+
+
+Add Cluster 3 to next set.
+New Clusters are :-
+Cluster 1 : -
+1.0 2.0
+2.0 3.0
+4.0 4.0
+5.0 4.0
+Cluster 2 : -
+3.0 6.0
+Threshold for merging clusters is : 6.
+Distance between Cluster 1 and 2 is : 5.0
+Merge clusters 1 and 2 and add it to next set.
+
+
+New Clusters are :-
+Cluster 1 : -
+1.0 2.0
+2.0 3.0
+4.0 4.0
+5.0 4.0
 3.0 6.0
 -----------------------------

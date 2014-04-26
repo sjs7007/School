@@ -55,6 +55,7 @@ class clusterList
 				}
 			}
 		}
+		minDistance = Math.sqrt(minDistance);
 		return minDistance;
 	}
 
@@ -85,7 +86,7 @@ class clusterList
 					//if distance < threshold, join those clusters and remove them from avail clusters
 					if(avail[i]==true && avail[j]==true)
 					{
-						System.out.println("Merge clusters "+(i+1)+" and "+(j+1)+" and add it to next set.");
+						System.out.println("Merge clusters "+(i+1)+" and "+(j+1)+".");
 						nextSet.addCluster(mergeClusters(cList[i],cList[j]));
 						//nextSet.nClusters++;
 						//Cluster x = mergeClusters(cList[i],cList[j]);					
@@ -95,24 +96,35 @@ class clusterList
 					}
 				}
 			}	
-			System.out.println();
+			//System.out.println();
 		}
 		for(int i=0;i<nClusters;i++)
 		{
 			if(avail[i]==true)
 			{
-				System.out.println("Add Cluster "+(i+1)+" to next set.");
+				//System.out.println("Add Cluster "+(i+1)+" to next set.");
 				nextSet.addCluster(cList[i]);
 			}
 		}
 		System.out.println("New Clusters are :-");
-		for(int i=0;i<nextSet.nClusters;i++)
+		/*for(int i=0;i<nextSet.nClusters;i++)
 		{
 			Cluster x = nextSet.cList[i];
 			System.out.println("Cluster "+(i+1)+" : -");
 			x.displayCluster();
-		}
+		}*/
+		nextSet.displayClusterList();
 		return nextSet;
+	}
+
+	void displayClusterList()
+	{
+		for(int i=0;i<nClusters;i++)
+		{
+			//Cluster x = nextSet.cList[i];
+			System.out.println("Cluster "+(i+1)+" : -");
+			cList[i].displayCluster();
+		}
 	}
 
 	Cluster mergeClusters(Cluster C1,Cluster C2)
@@ -170,12 +182,20 @@ class Agglomerative
 		
 		//C.findMatrix();
 		//Cluster C3 = C.mergeClusters(C.cList[0],C.cList[1]);
-		clusterList C2 = C.findMatrix(1);
-		C2=C2.findMatrix(2);
+		//clusterList C2 = C.findMatrix(1);
+		//C2=C2.findMatrix(2);
 		//C.cList[0].displayCluster();
 		//C2.cList[0].displayCluster();
 		//C2.findMatrix(2);
-		
+		int i=1;
+		do
+		{	
+			System.out.println("Threshold for merging clusters is : "+i+".");
+			C = C.findMatrix(i);
+			System.out.println("------------------------");
+			i++;
+		}
+		while(C.cList[0].size!=5);
 
 	}
 
