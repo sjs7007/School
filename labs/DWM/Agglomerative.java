@@ -135,7 +135,7 @@ class Agglomerative
 {
 	public static void main(String args[])
 	{
-		clusterList C = new clusterList(5);
+		/*clusterList C = new clusterList(5);
 		C.cList[0]=new Cluster(1);
 		C.cList[1]=new Cluster(1);
 		C.cList[2]=new Cluster(1);
@@ -146,7 +146,23 @@ class Agglomerative
 		C.cList[2].itemList[0]=new item(4,4);
 		C.cList[3].itemList[0]=new item(5,4);
 		C.cList[4].itemList[0]=new item(3,6);
+		*/
 
+		clusterList C = new clusterList(6);
+		int size=C.nClusters;
+		C.cList[0]=new Cluster(1);
+		C.cList[1]=new Cluster(1);
+		C.cList[2]=new Cluster(1);
+		C.cList[3]=new Cluster(1);
+		C.cList[4]=new Cluster(1);
+		C.cList[5]=new Cluster(1);
+		C.cList[0].itemList[0]=new item(1,5);
+		C.cList[1].itemList[0]=new item(1,1);
+		C.cList[2].itemList[0]=new item(2,1);
+		C.cList[3].itemList[0]=new item(4,3);
+		C.cList[4].itemList[0]=new item(5,4);
+		C.cList[5].itemList[0]=new item(6,2);
+		
 		int i=1;
 		do
 		{	
@@ -155,6 +171,6 @@ class Agglomerative
 			System.out.println("------------------------");
 			i++;
 		}
-		while(C.cList[0].size!=5);
+		while(C.cList[0].size!=size);
 	}		
 }

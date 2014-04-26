@@ -135,7 +135,7 @@ class Agglomerative
 {
 	public static void main(String args[])
 	{
-		clusterList C = new clusterList(5);
+		/*clusterList C = new clusterList(5);
 		C.cList[0]=new Cluster(1);
 		C.cList[1]=new Cluster(1);
 		C.cList[2]=new Cluster(1);
@@ -146,7 +146,22 @@ class Agglomerative
 		C.cList[2].itemList[0]=new item(4,4);
 		C.cList[3].itemList[0]=new item(5,4);
 		C.cList[4].itemList[0]=new item(3,6);
+		*/
 
+		clusterList C = new clusterList(6);
+		C.cList[0]=new Cluster(1);
+		C.cList[1]=new Cluster(1);
+		C.cList[2]=new Cluster(1);
+		C.cList[3]=new Cluster(1);
+		C.cList[4]=new Cluster(1);
+		C.cList[5]=new Cluster(1);
+		C.cList[0].itemList[0]=new item(1,5);
+		C.cList[1].itemList[0]=new item(1,1);
+		C.cList[2].itemList[0]=new item(2,1);
+		C.cList[3].itemList[0]=new item(4,3);
+		C.cList[4].itemList[0]=new item(5,4);
+		C.cList[5].itemList[0]=new item(6,2);
+		
 		int i=1;
 		do
 		{	
@@ -158,74 +173,3 @@ class Agglomerative
 		while(C.cList[0].size!=5);
 	}		
 }
-
---------------------------------------
-Output :-
-
-Threshold for merging clusters is : 1.
-Distance between Cluster 1 and 2 is : 1.4142135623730951
-Distance between Cluster 1 and 3 is : 3.605551275463989
-Distance between Cluster 1 and 4 is : 4.47213595499958
-Distance between Cluster 1 and 5 is : 4.47213595499958
-Distance between Cluster 2 and 3 is : 2.23606797749979
-Distance between Cluster 2 and 4 is : 3.1622776601683795
-Distance between Cluster 2 and 5 is : 3.1622776601683795
-Distance between Cluster 3 and 4 is : 1.0
-Merge clusters 3 and 4.
-Distance between Cluster 3 and 5 is : 2.23606797749979
-Distance between Cluster 4 and 5 is : 2.8284271247461903
-New Clusters are :-
-Cluster 1 : -
-4.0 4.0
-5.0 4.0
-Cluster 2 : -
-1.0 2.0
-Cluster 3 : -
-2.0 3.0
-Cluster 4 : -
-3.0 6.0
-------------------------
-Threshold for merging clusters is : 2.
-Distance between Cluster 1 and 2 is : 3.605551275463989
-Distance between Cluster 1 and 3 is : 2.23606797749979
-Distance between Cluster 1 and 4 is : 2.23606797749979
-Distance between Cluster 2 and 3 is : 1.4142135623730951
-Merge clusters 2 and 3.
-Distance between Cluster 2 and 4 is : 4.47213595499958
-Distance between Cluster 3 and 4 is : 3.1622776601683795
-New Clusters are :-
-Cluster 1 : -
-1.0 2.0
-2.0 3.0
-Cluster 2 : -
-4.0 4.0
-5.0 4.0
-Cluster 3 : -
-3.0 6.0
-------------------------
-Threshold for merging clusters is : 3.
-Distance between Cluster 1 and 2 is : 2.23606797749979
-Merge clusters 1 and 2.
-Distance between Cluster 1 and 3 is : 3.1622776601683795
-Distance between Cluster 2 and 3 is : 2.23606797749979
-New Clusters are :-
-Cluster 1 : -
-1.0 2.0
-2.0 3.0
-4.0 4.0
-5.0 4.0
-Cluster 2 : -
-3.0 6.0
-------------------------
-Threshold for merging clusters is : 4.
-Distance between Cluster 1 and 2 is : 2.23606797749979
-Merge clusters 1 and 2.
-New Clusters are :-
-Cluster 1 : -
-1.0 2.0
-2.0 3.0
-4.0 4.0
-5.0 4.0
-3.0 6.0
-------------------------
------------------------------
