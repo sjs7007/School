@@ -19,6 +19,15 @@ class Cluster
 		size=x;
 		itemList = new item[size];
 	}
+
+	void displayCluster()
+	{
+		System.out.println("Cluster:-");
+		for(int i=0;i<size;i++)
+		{
+			System.out.println(itemList[i].x+" "+itemList[i].y);
+		}
+	}
 }
 
 class clusterList
@@ -65,7 +74,7 @@ class clusterList
 				System.out.print(temp+"\t");
 				if(temp<=1)
 				{
-					System.out.println("\nJoin Cluster "+(i+1)+" and "+"Cluster "+j);
+					System.out.print("  Join Cluster "+(i+1)+" and "+"Cluster "+(j+1)+"  ");
 				}
 			}
 			System.out.println();
@@ -105,6 +114,25 @@ class Agglomerative
 
 		//System.out.println(C.findMinDistance(C.cList[0],C.cList[1]));
 		
-		C.findMatrix();
+		//C.findMatrix();
+		Cluster C3 = mergeClusters(C.cList[0],C.cList[1]);
+	}
+
+	public static Cluster mergeClusters(Cluster C1,Cluster C2)
+	{
+		Cluster C3 = new Cluster(C1.size+C2.size);
+		for(int i=0;i<C1.size;i++)
+		{
+			C3.itemList[i] = C1.itemList[i];
+		}
+		int n1 = C1.size,n2=C2.size;
+		int n3=n1+n2;
+		for(int i=0;i<n2;i++)
+		{
+			C3.itemList[n1+i] = C2.itemList[i];
+		}
+		System.out.println("Merged Cluster : -");
+		C3.displayCluster();
+		return C3;
 	}
 }
