@@ -1,3 +1,4 @@
+alias b='vim ~/bookmarks.txt' #bookmarksw
 alias p='sh ~/philips.sh'
 
 alias t='sh testTeperature.sh'

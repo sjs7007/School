@@ -4,6 +4,9 @@ echo `date` | cat >> ~/cron/syncDown3Log
 #GRE
 #rsync --partial --progress -h -a ~/Desktop/Dropbox/00GRE ~/Desktop/toAce/GRE
 
+#bookmarks
+cp ~/bookmarks.txt ~/Desktop/toAce/
+
 #lab codes
 cp `find /home/shin/School/labs -name "*.txt"` /home/shin/School/labs/textCombinedAll ; rm /home/shin/School/labs/textCombinedAll/end.txt ; rm /home/shin/School/labs/textCombinedAll/oBegins.txt 
 rsync -a --partial -h --progress /home/shin/School/labs/ /home/shin/Desktop/toAce/labs/
