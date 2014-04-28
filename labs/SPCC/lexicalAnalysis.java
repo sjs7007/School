@@ -1,13 +1,20 @@
+import java.io.*;
+import java.util.*;
+
 class lexicalAnalysis
 {
-	public static void main(String args[])
+	public static void main(String args[]) throws IOException
 	{
 		String keywords[] = {"void,int"};
 		String terminal[] = {"{","}","(",")",",",";"}; 
 		String operators[] = {"+","-","*","/","="};
 		
-		String program[]={"void main ( ) ","{"," int a , b , c ; "," c = a + b ; "," } "};
+		//String program[]={"void main ( ) ","{"," int a , b , c ; "," c = a + b ; "," } "};
 		//System.out.println(belongsTo(terminal,"{"));
+		
+		String program[]=readFile(new String("lexicalInput.txt")); //read file into string array
+		DataOutputStream writeOut = new DataOutputStream(new FileOutputStream("lexicalOutput.txt"));
+
 		for(int i=0;i<program.length;i++)
 		{
 			String temp[] = program[i].split(" ");
@@ -15,22 +22,25 @@ class lexicalAnalysis
 			{
 				if(belongsTo(keywords,temp[j]))
 				{
-					System.out.println("Line "+(i+1)+"\t"+temp[j]+"\tKeyword");
+					writeOut.writeBytes("Line "+(i+1)+"\t\t"+temp[j]+"\t\tKeyword"+System.getProperty("line.separator"));
 				}
 				else if(belongsTo(terminal,temp[j]))
 				{
-					System.out.println("Line "+(i+1)+"\t"+temp[j]+"\tTerminal");
+					writeOut.writeBytes("Line "+(i+1)+"\t\t"+temp[j]+"\t\tTerminal"+System.getProperty("line.separator"));
 				}
 				else if(belongsTo(operators,temp[j]))
 				{
-					System.out.println("Line "+(i+1)+"\t"+temp[j]+"\tOperator");
+					writeOut.writeBytes("Line "+(i+1)+"\t\t"+temp[j]+"\t\tOperator"+System.getProperty("line.separator"));
 				}
 				else if(temp[j].length()!=0 && Character.isLetter(temp[j].charAt(0)))
 				{
-					System.out.println("Line "+(i+1)+"\t"+temp[j]+"\tIdentifier");
+					writeOut.writeBytes("Line "+(i+1)+"\t\t"+temp[j]+"\t\tIdentifier"+System.getProperty("line.separator"));
 				}
+				//writeOut.writeBytes(System.getProperty("line.separator"));
 			}
 		}
+
+		writeOut.close();
 	}
 
 	public static boolean belongsTo(String x[],String y)
@@ -45,5 +55,16 @@ class lexicalAnalysis
 			}
 		}
 		return answer;
+	}
+
+	public static String[] readFile(String filename) throws IOException //store contents of file in string array
+	{
+		Scanner ip = new Scanner(new File(filename));
+		ArrayList<String> lines = new ArrayList<String>();
+		while(ip.hasNextLine())
+		{
+			lines.add(ip.nextLine());
+		}
+		return lines.toArray(new String[0]);
 	}
 }
