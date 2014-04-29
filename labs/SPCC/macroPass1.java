@@ -75,7 +75,7 @@ class macroPass1
 		writeOut.writeBytes("Index\t\tArgument\n");
 		for(int i=0;i<ALACount;i++)
 		{
-			writeOut.writeBytes((i+1)+"\t\t"+ALA[i]+"\n");
+			writeOut.writeBytes("#"+(i+1)+"\t\t"+ALA[i]+"\n");
 		}
 		writeOut.close();
 	}
