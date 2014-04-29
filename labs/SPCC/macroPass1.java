@@ -48,7 +48,7 @@ class macroPass1
 					temp2[2] = "#"+Integer.toString(findTableIndex(temp2[2],ALA));
 					if(j==start)
 					{
-						temp2[1]="#"+Integer.toString(findTableIndex(temp2[1].substring(0,temp2[1].length()-1),ALA));
+						temp2[1]="#"+Integer.toString(findTableIndex(temp2[1].substring(0,temp2[1].length()-1),ALA))+",";
 					}
 					String temp3 = combineArray(temp2);
 					MDTCount = updateTable(temp3,MDT);
@@ -57,30 +57,25 @@ class macroPass1
 			}	
 		}
 
-
-	/*	display(MNT,MNTCount);
-		display(ALA,ALACount);
-		display(MDT,MDTCount);
-		*/
-		System.out.println("Macro Name Table:-");
-		System.out.println("MNTI\t\tMName\t\tMDTI");
+		writeOut.writeBytes("Macro Name Table:-\n");
+		writeOut.writeBytes("MNTI\t\tMName\t\tMDTI\n");
 		for(int i=0;i<MNTCount;i++)
 		{
-			System.out.println((i+1)+"\t\t"+MNT[i]+"\t\t"+MDTindexes[i]);
+			writeOut.writeBytes((i+1)+"\t\t"+MNT[i]+"\t\t"+MDTindexes[i]+"\n");
 		}
 		
-		System.out.println("\nMacro Definition Table:-");
-		System.out.println("Index\t\tDefinition");
+		writeOut.writeBytes("\nMacro Definition Table:-\n");
+		writeOut.writeBytes("Index\t\tDefinition\n");
 		for(int i=0;i<MDTCount;i++)
 		{
-			System.out.println((i+1)+"\t\t"+MDT[i]);
+			writeOut.writeBytes((i+1)+"\t\t"+MDT[i]+"\n");
 		}
 		
-		System.out.println("\nArgument List Array:-");
-		System.out.println("Index\t\tArgument");
+		writeOut.writeBytes("\nArgument List Array:-\n");
+		writeOut.writeBytes("Index\t\tArgument\n");
 		for(int i=0;i<ALACount;i++)
 		{
-			System.out.println((i+1)+"\t\t"+ALA[i]);
+			writeOut.writeBytes((i+1)+"\t\t"+ALA[i]+"\n");
 		}
 		writeOut.close();
 	}
@@ -111,15 +106,6 @@ class macroPass1
 			}
 		}
 		return temp;
-	}
-
-	public static void display(String x[],int count)
-	{
-		for(int i=0;i<count;i++)
-		{
-			System.out.println(x[i]);
-		}
-		System.out.println();
 	}
 
 	public static int findTableIndex(String x,String table[])
