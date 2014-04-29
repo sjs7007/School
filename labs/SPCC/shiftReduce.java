@@ -5,8 +5,6 @@ class Production
 	String LHS;
 	String productions[]; //has LHS at 0th position so size = nProd+1
 	int nProductions;
-	boolean isTerminal[]; //store if ith profuction is terminal or not
-	String first = new String(); //store first as a string separated by spaces 
 
 	Production(String ip)
 	{
