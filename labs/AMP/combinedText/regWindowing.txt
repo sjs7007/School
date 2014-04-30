@@ -65,16 +65,12 @@ class regWindowing
 Output :-
 
 Register window generated....
-ins = { 27 , 54 , 43 , 11 , 35 , 43 , 40 , 17 } 
-outs = { 7 , 50 , 8 , 5 , 81 , 87 , 26 , 74 } 
-locals = { 99 , 47 , 31 , 82 , 27 , 39 , 90 , 32 } 
+ins = { 14 , 15 , 32 , 46 , 30 , 95 , 72 , 66 } 
+outs = { 80 , 57 , 48 , 47 , 28 , 50 , 23 , 42 } 
+locals = { 0 , 3 , 33 , 44 , 85 , 38 , 89 , 18 } 
 
-Do you want to continue(yes/no): ins = { 7 , 50 , 8 , 5 , 81 , 87 , 26 , 74 } 
-outs = { 95 , 55 , 5 , 99 , 89 , 39 , 49 , 26 } 
-locals = { 92 , 66 , 28 , 35 , 72 , 47 , 50 , 53 } 
-
-Do you want to continue(yes/no): ins = { 95 , 55 , 5 , 99 , 89 , 39 , 49 , 26 } 
-outs = { 58 , 6 , 22 , 54 , 45 , 64 , 76 , 42 } 
-locals = { 55 , 67 , 32 , 94 , 8 , 72 , 15 , 77 } 
+Do you want to continue(yes/no): ins = { 80 , 57 , 48 , 47 , 28 , 50 , 23 , 42 } 
+outs = { 28 , 51 , 34 , 3 , 42 , 25 , 70 , 53 } 
+locals = { 62 , 9 , 24 , 59 , 40 , 38 , 72 , 1 } 
 
 Do you want to continue(yes/no): -----------------------------
