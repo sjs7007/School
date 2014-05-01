@@ -13,7 +13,8 @@ class pageRank
 			pageRank[i]=1/(float)nPages;
 		}
 		//int adjacencyMatrix[] = new int[nPages][nPages];
-		int adjacencyMatrix[][]={{0,1,1,1},{0,0,1,1},{1,0,0,0},{1,0,1,0}};
+		//int adjacencyMatrix[][]={{0,1,1,1},{0,0,1,1},{1,0,0,0},{1,0,1,0}};
+		int adjacencyMatrix[][]={{1,1,1,1},{1,1,1,0},{1,1,0,0},{1,0,0,0}};
 		int outGoing[] = new int[nPages];
 		for(int i=0;i<nPages;i++)
 		{

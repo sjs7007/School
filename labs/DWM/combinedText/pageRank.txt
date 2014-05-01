@@ -1,4 +1,4 @@
-//Page Rank
+//Page Rank : http://www.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture3/lecture3.html
 
 import java.util.*;
 
@@ -13,7 +13,8 @@ class pageRank
 			pageRank[i]=1/(float)nPages;
 		}
 		//int adjacencyMatrix[] = new int[nPages][nPages];
-		int adjacencyMatrix[][]={{0,1,1,1},{0,0,1,1},{1,0,0,0},{1,0,1,0}};
+		//int adjacencyMatrix[][]={{0,1,1,1},{0,0,1,1},{1,0,0,0},{1,0,1,0}};
+		int adjacencyMatrix[][]={{1,1,1,1},{1,1,1,0},{1,1,0,0},{1,0,0,0}};
 		int outGoing[] = new int[nPages];
 		for(int i=0;i<nPages;i++)
 		{
@@ -75,51 +76,45 @@ class pageRank
 --------------------------------------
 Output :-
 
-Page Rank of 1 is : 0.375
-Page Rank of 2 is : 0.083333336
-Page Rank of 3 is : 0.33333334
-Page Rank of 4 is : 0.20833334
+Page Rank of 1 is : 0.5208334
+Page Rank of 2 is : 0.27083334
+Page Rank of 3 is : 0.14583334
+Page Rank of 4 is : 0.0625
 
 After iteration 2 :- 
-Page Rank of 1 is : 0.4375
-Page Rank of 2 is : 0.125
-Page Rank of 3 is : 0.27083334
-Page Rank of 4 is : 0.16666667
+Page Rank of 1 is : 0.3559028
+Page Rank of 2 is : 0.2934028
+Page Rank of 3 is : 0.22048613
+Page Rank of 4 is : 0.13020834
 
 After iteration 3 :- 
-Page Rank of 1 is : 0.3541667
-Page Rank of 2 is : 0.14583333
-Page Rank of 3 is : 0.29166666
-Page Rank of 4 is : 0.20833333
+Page Rank of 1 is : 0.42722806
+Page Rank of 2 is : 0.29701972
+Page Rank of 3 is : 0.18677664
+Page Rank of 4 is : 0.0889757
 
 After iteration 4 :- 
-Page Rank of 1 is : 0.3958333
-Page Rank of 2 is : 0.11805556
-Page Rank of 3 is : 0.2951389
-Page Rank of 4 is : 0.19097222
+Page Rank of 1 is : 0.3881776
+Page Rank of 2 is : 0.2992019
+Page Rank of 3 is : 0.20581359
+Page Rank of 4 is : 0.106807016
 
 After iteration 5 :- 
-Page Rank of 1 is : 0.390625
-Page Rank of 2 is : 0.13194443
-Page Rank of 3 is : 0.2864583
-Page Rank of 4 is : 0.19097221
+Page Rank of 1 is : 0.4064922
+Page Rank of 2 is : 0.29968518
+Page Rank of 3 is : 0.19677837
+Page Rank of 4 is : 0.0970444
 
 After iteration 6 :- 
-Page Rank of 1 is : 0.38194442
-Page Rank of 2 is : 0.13020833
-Page Rank of 3 is : 0.29166666
-Page Rank of 4 is : 0.19618055
+Page Rank of 1 is : 0.3969517
+Page Rank of 2 is : 0.2999073
+Page Rank of 3 is : 0.20151812
+Page Rank of 4 is : 0.10162305
 
 After iteration 7 :- 
-Page Rank of 1 is : 0.38975692
-Page Rank of 2 is : 0.1273148
-Page Rank of 3 is : 0.29050922
-Page Rank of 4 is : 0.19241896
-
-After iteration 8 :- 
-Page Rank of 1 is : 0.3867187
-Page Rank of 2 is : 0.12991898
-Page Rank of 3 is : 0.28978586
-Page Rank of 4 is : 0.19357638
+Page Rank of 1 is : 0.40158916
+Page Rank of 2 is : 0.2999661
+Page Rank of 3 is : 0.19920702
+Page Rank of 4 is : 0.09923793
 
 -----------------------------

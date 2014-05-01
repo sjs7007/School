@@ -5,7 +5,7 @@ class lexicalAnalysis
 {
 	public static void main(String args[]) throws IOException
 	{
-		String keywords[] = {"void,int"};
+		String keywords[] = {"void","main","int"};
 		String terminal[] = {"{","}","(",")",",",";"}; 
 		String operators[] = {"+","-","*","/","="};
 		
@@ -32,7 +32,7 @@ class lexicalAnalysis
 				{
 					writeOut.writeBytes("Line "+(i+1)+"\t\t"+temp[j]+"\t\tOperator"+System.getProperty("line.separator"));
 				}
-				else if(temp[j].length()!=0 && Character.isLetter(temp[j].charAt(0)))
+				else if(temp[j].length()==1 && Character.isLetter(temp[j].charAt(0)))
 				{
 					writeOut.writeBytes("Line "+(i+1)+"\t\t"+temp[j]+"\t\tIdentifier"+System.getProperty("line.separator"));
 				}
