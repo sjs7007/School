@@ -15,17 +15,12 @@ class macroPass1
 
 		for(int i=0;i<program.length;i++)
 		{
-			//writeOut.writeBytes(System.getProperty("line.separator"));
 			int start=-1,end=-1;
-			//System.out.println(program[i]);
 			if(program[i].equals("MACRO"))
 			{
-				//System.out.println("3");
 				start=i+1;
 				String temp[] = program[start].split(" ");
 				MNTCount = updateTable(temp[0],MNT); //send macro name
-			//System.out.println(temp[0]+ " "+MNTCount );
-				//npw update ALA
 				MDTindexes[MNTCount-1] = MDTCount+1;
 
 				for(int j=1;j<temp.length-1;j++)
@@ -45,11 +40,9 @@ class macroPass1
 				for(int j=start;j<end;j++)
 				{
 					String temp2[] = program[j].split(" ");
-					//temp2[2] = "#"+Integer.toString(findTableIndex(temp2[2],ALA)+1);
 					int temp4=2;
 					if(j==start)
 					{
-						//temp2[1]="#"+Integer.toString(findTableIndex(temp2[1].substring(0,temp2[1].length()-1),ALA)+1)+",";
 						temp4=1;
 					}
 					for(int k=temp4;k<temp2.length-1;k++)

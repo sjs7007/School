@@ -188,9 +188,9 @@ class BayesianDBC
 	/*	System.out.println(temp1);
 		System.out.println(temp2);
 		System.out.println(temp3);*/
-		temp1 =(temp1 * T.pHR)/(double)T.nEntries;
-		temp2 =(temp2 * T.pMR)/(double)T.nEntries;
-		temp3 =(temp3 * T.pLR)/(double)T.nEntries;
+		temp1 =temp1 * T.pHR;
+		temp2 =temp2 * T.pMR;
+		temp3 =temp3 * T.pLR;
 		System.out.println(temp1);
 		System.out.println(temp2);
 		System.out.println(temp3);
@@ -208,16 +208,16 @@ class BayesianDBC
 		}	
 	}
 }
-/* 
-Enter Credit History,Debt,Collateral,0 for <10k income,1 for 10-25k and 2 for >25k : unknown low none 1
+/*
+Enter Credit History,Debt,Collateral,0 for <10k income,1 for 10-25k and 2 for >25k : unknown low none 1 
 num : 20.0
 den : 625.0
 num : 8.0
 den : 81.0
 num : 0.0
 den : 256.0
-0.0011111111111111111
-0.0020576131687242796
+0.013333333333333334
+0.024691358024691357
 0.0
 Sample belongs to Moderate Risk category.
 */

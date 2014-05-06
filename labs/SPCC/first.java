@@ -8,11 +8,16 @@ class Production
 	int nProductions;
 	boolean isTerminal[]; //store if ith profuction is terminal or not
 	String first = new String(); //store first as a string separated by spaces 
+	String allP="";
 
 	Production(String ip)
 	{
 		productions = ip.split(" ");
 		LHS = productions[0];
+		for(int i=1;i<productions.length;i++)
+		{
+			allP=allP+productions[i]+" ";
+		}
 		nProductions = productions.length-1;
 		isTerminal = new boolean[nProductions+1]; //start from 1
 		fillIsTerminal();
@@ -29,7 +34,7 @@ class Production
 	boolean checkTerminal(String input) //check if input starts with therminal or not
 	{
 		boolean flag=false;
-		if(Character.isLowerCase(input.charAt(0)))
+		if(!Character.isUpperCase(input.charAt(0)))
 		{
 			flag=true;
 		}
@@ -41,15 +46,18 @@ class Grammar
 {
 	int nNonTerminals;
 	Production prodSet[];
+	String allP;
 	
 	Grammar(int x)
 	{
 		nNonTerminals=x;
 		prodSet = new Production[nNonTerminals];
 		//enter rules here
-		prodSet[0]=new Production("S Aa b");
-		prodSet[1]=new Production("A bdZ eZ");
-		prodSet[2]=new Production("Z cZ adZ x");
+		prodSet[0]=new Production("S ABC");
+		prodSet[1]=new Production("A a ?");
+		prodSet[2]=new Production("B b");
+		prodSet[3]=new Production("C c ?");
+		allP = prodSet[0].allP+prodSet[1].allP+prodSet[2].allP+prodSet[3].allP;
 	}
 
 	String findTerminal(String input)
@@ -103,8 +111,25 @@ class first
 {
 	public static void main(String args[])
 	{
-		Grammar G = new Grammar(3); //enter number of rules
+		Grammar G = new Grammar(4); //enter number of rules
 		G.findAllFirst();
+
+		//to find follow
+		String follow[]=new String[G.prodSet.length];
+		
+		for(int i=0;i<G.prodSet.length;i++)
+		{
+			String temp1;
+			int temp2;
+
+			System.out.println(G.allP);
+
+			for(int j=0;j<G.prodSet.length;j++)
+			{
+				System.out.println(G.allP.indexOf(G.prodSet[j].LHS));		
+			}
+			System.out.println("Follow : "+follow[i]);
+		}
 	}
 }
 
