@@ -25,6 +25,8 @@ class Apriori
 		//System.out.print(transList.get(0).containsAll(Arrays.asList(cSet.get(0).toArray())));
 		//Use above code to check if subset
 
+		ArrayList<ArrayList<TreeSet<Integer>>> allLargeSets = new ArrayList<ArrayList<TreeSet<Integer>>>(); 
+
 		while(cSet.size()!=0)
 		{	
 			ArrayList<TreeSet<Integer>> largeSet = new ArrayList<TreeSet<Integer>>();
@@ -49,6 +51,7 @@ class Apriori
 			}
 
 			System.out.println("Large Item Set of size "+setSize+" : "+largeSet);
+			allLargeSets.add(largeSet); 
 			
 			//form new candidate sets of last size +1
 			cSet = new ArrayList<TreeSet<Integer>>();
@@ -70,5 +73,6 @@ class Apriori
 			System.out.println("New Candidate Set of size "+setSize+": "+cSet);
 			System.out.println();
 		}
+		System.out.println("All Large Sets Combined : "+allLargeSets);
 	}
 }
