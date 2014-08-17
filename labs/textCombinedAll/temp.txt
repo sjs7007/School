@@ -1,8 +1,0 @@
-START
-MACRO
-INCR &arg1, &arg2
-A 1, &arg1
-A 2, &arg2
-MEND
-INCR data1,data2
-END

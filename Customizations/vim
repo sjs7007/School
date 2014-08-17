@@ -3,7 +3,7 @@ set autoindent
 set cindent
 
 "no swap file
-set noswapfile
+"set noswapfile //commented out now
 
 "change tab width to 4 spaces
 set tabstop=4
