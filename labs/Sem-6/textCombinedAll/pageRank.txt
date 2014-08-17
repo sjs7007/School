@@ -1,0 +1,120 @@
+//Page Rank : http://www.math.cornell.edu/~mec/Winter2009/RalucaRemus/Lecture3/lecture3.html
+
+import java.util.*;
+
+class pageRank
+{
+	public static void main(String args[])
+	{
+		int nPages=4;
+		float pageRank[] = new float[nPages];
+		for(int i=0;i<nPages;i++)
+		{
+			pageRank[i]=1/(float)nPages;
+		}
+		//int adjacencyMatrix[] = new int[nPages][nPages];
+		//int adjacencyMatrix[][]={{0,1,1,1},{0,0,1,1},{1,0,0,0},{1,0,1,0}};
+		int adjacencyMatrix[][]={{1,1,1,1},{1,1,1,0},{1,1,0,0},{1,0,0,0}};
+		int outGoing[] = new int[nPages];
+		for(int i=0;i<nPages;i++)
+		{
+			for(int j=0;j<nPages;j++)
+			{
+				if(adjacencyMatrix[i][j]==1)
+				{
+					outGoing[i]++;
+				}
+			}
+			//System.out.println(outGoing[i]);
+		}
+		float change = calcPR(pageRank,outGoing,adjacencyMatrix);
+		//Now page rank should be recalculated again and again till equlibrium value, or change < 0.01
+		int i=1;
+		while(change>0.01)
+		{
+			i++;
+			System.out.println("After iteration "+i+" :- ");
+			change = calcPR(pageRank,outGoing,adjacencyMatrix);
+		}
+	}
+
+	public static float calcPR(float pageRank[],int outGoing[],int adjacencyMatrix[][]) //return change in page ranks
+	{
+		int nPages=pageRank.length;
+		float newPR[]=new float[nPages];
+		float change=0;
+		for(int i=0;i<nPages;i++)
+		{
+			float temp=0;
+			for(int j=0;j<nPages;j++)
+			{
+				if(adjacencyMatrix[j][i]==1)
+				{
+				//	System.out.println(pageRank[j]+" "+outGoing[j]);
+					temp = temp + pageRank[j]/outGoing[j];
+				}
+			}
+			newPR[i] = temp;
+		}
+
+		for(int i=0;i<nPages;i++)
+		{	
+			change+=Math.abs(newPR[i]-pageRank[i]);
+			pageRank[i] = newPR[i];
+		}
+
+		//display
+		for(int i=0;i<nPages;i++)
+		{
+			System.out.println("Page Rank of "+(i+1)+" is : "+pageRank[i]);
+		}
+		System.out.println();
+		return change;
+	}
+}
+
+--------------------------------------
+Output :-
+
+Page Rank of 1 is : 0.5208334
+Page Rank of 2 is : 0.27083334
+Page Rank of 3 is : 0.14583334
+Page Rank of 4 is : 0.0625
+
+After iteration 2 :- 
+Page Rank of 1 is : 0.3559028
+Page Rank of 2 is : 0.2934028
+Page Rank of 3 is : 0.22048613
+Page Rank of 4 is : 0.13020834
+
+After iteration 3 :- 
+Page Rank of 1 is : 0.42722806
+Page Rank of 2 is : 0.29701972
+Page Rank of 3 is : 0.18677664
+Page Rank of 4 is : 0.0889757
+
+After iteration 4 :- 
+Page Rank of 1 is : 0.3881776
+Page Rank of 2 is : 0.2992019
+Page Rank of 3 is : 0.20581359
+Page Rank of 4 is : 0.106807016
+
+After iteration 5 :- 
+Page Rank of 1 is : 0.4064922
+Page Rank of 2 is : 0.29968518
+Page Rank of 3 is : 0.19677837
+Page Rank of 4 is : 0.0970444
+
+After iteration 6 :- 
+Page Rank of 1 is : 0.3969517
+Page Rank of 2 is : 0.2999073
+Page Rank of 3 is : 0.20151812
+Page Rank of 4 is : 0.10162305
+
+After iteration 7 :- 
+Page Rank of 1 is : 0.40158916
+Page Rank of 2 is : 0.2999661
+Page Rank of 3 is : 0.19920702
+Page Rank of 4 is : 0.09923793
+
+-----------------------------

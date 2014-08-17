@@ -1,0 +1,24 @@
+Macro Name Table:-
+MNTI		MName		MDTI
+1		INCR		1
+
+Macro Definition Table:-
+Index		Definition
+1		INCR #1, #2, #3
+2		A 1, #1
+3		A 2, #2
+4		A 3, #3
+5		MEND
+
+Argument List Array:-
+Index		Argument
+#1		&arg1
+#2		&arg2
+#3		&arg3
+
+Pass 2 :-
+Argument List Array:-
+Index		Argument
+#1		data1
+#2		data2
+#3		data3
